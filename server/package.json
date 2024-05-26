@@ -1,6 +1,7 @@
 {
   "name": "safe-gate",
   "version": "1.0.0",
+  "type": "module",
   "description": "A secure user authentication platform developed using MERN and JWT tokens.",
   "main": "index.js",
   "scripts": {
