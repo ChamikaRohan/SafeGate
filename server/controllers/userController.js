@@ -16,8 +16,16 @@ export const signup = async (req, res)=>{
 }
 
 export const signin = async (req, res)=>{
-    const userData = req.body;
+    try
+    {const userData = req.body;
     const {email, password} = userData;
     const userExists = await User.findOne({email});
-    if (!userExists) return res.status(401 ).json({error: "Unauthorized response, please signup!"});
+    if (!userExists) return res.status(401 ).json({error: "Unauthorized, please signup!"});
+    const isMatch = await userExists.comparePassword(password);
+    if(!isMatch){return res.status(401).json({ error: 'Invalid password' });};
+    res.status(200).json({message: "User signed in successfully!"})
+    } 
+    catch (error) {
+        res.status(500).json({error: "Internal server error"});
+    }
 }
