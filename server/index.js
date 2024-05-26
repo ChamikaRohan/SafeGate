@@ -21,4 +21,4 @@ mongoose.connect(DB)
 
 app.listen( PORT, (console.log(`Server is running on port: ${PORT}`)));
 
-app.use('/server/user', userRoute);
+app.use('/api/user', userRoute);
