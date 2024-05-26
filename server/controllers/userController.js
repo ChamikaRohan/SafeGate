@@ -1,4 +1,5 @@
 import User from "../models/userModel.js"
+import jwt from 'jsonwebtoken'
 
 export const signup = async (req, res)=>{
     try{
@@ -23,7 +24,10 @@ export const signin = async (req, res)=>{
     if (!userExists) return res.status(401 ).json({error: "Unauthorized, please signup!"});
     const isMatch = await userExists.comparePassword(password);
     if(!isMatch){return res.status(401).json({ error: 'Invalid password' });};
-    res.status(200).json({message: "User signed in successfully!"})
+    
+    const token = jwt.sign({id: userExists._id}, process.env.JWT_SECRET,{ expiresIn: '2h'});
+
+    res.cookie("access_token", token, {httpOnly: true}).status(200).json({message: "User signed in successfully!"});
     } 
     catch (error) {
         res.status(500).json({error: "Internal server error"});
