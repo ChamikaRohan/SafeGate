@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './SignupPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye,faEyeSlash  } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'
 
 
 export default function SignupPage() {
@@ -10,9 +11,14 @@ export default function SignupPage() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
   
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
+    };
+
+    const goToSignin = ()=>{
+        navigate("/signin");
     };
     return (
     <div className="mainContainer">
@@ -30,7 +36,7 @@ export default function SignupPage() {
             </form>
             <div className='bottomContainer'>
                 <label className='bottomFText' >Already Register?</label>
-                <label className='bottomSText' >Login now</label>
+                <label onClick={goToSignin} className='bottomSText' >Login now</label>
             </div>
         </div>
     </div>

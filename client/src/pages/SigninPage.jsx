@@ -2,16 +2,22 @@ import React, { useState } from 'react'
 import './SigninPage.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye,faEyeSlash  } from '@fortawesome/free-solid-svg-icons';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function SigninPage() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
   
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    const goToSignup = ()=>{
+        navigate("/signup");
+    };
+
     return (
     <div className="mainContainer">
         <div className="subContainer">
@@ -23,11 +29,11 @@ export default function SigninPage() {
                     <input type={showPassword? "": "password"} class="passwordInput" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
                     <button type="button" className="viewPasswordBtn" onClick={togglePasswordVisibility}>{showPassword? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}</button>
                 </div>
-                <button className='btn'>Register</button>
+                <button className='btn'>Let's Go</button>
             </form>
             <div className='bottomContainer'>
                 <label className='bottomFText' >Not a Member?</label>
-                <label className='bottomSText' >Register now</label>
+                <label className='bottomSText' onClick={goToSignup} >Register now</label>
             </div>
         </div>
     </div>
