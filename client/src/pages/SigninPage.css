@@ -33,6 +33,14 @@
 
 }
 
+.subtopic{
+    font-family: "Poppins Light";
+    font-size: 11px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: gray;
+}
+
 .form{
     display: flex;
     flex-direction: column;

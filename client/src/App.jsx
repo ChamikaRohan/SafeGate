@@ -1,10 +1,10 @@
 import React from 'react'
-import SignupPage from './pages/SignupPage'
+import SigninPage from './pages/SigninPage'
 
 export default function App() {
   return (
     <div>
-      <SignupPage/>
+      <SigninPage/>
     </div>
   )
 }
