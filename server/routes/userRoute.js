@@ -4,6 +4,6 @@ import { signup, signin } from '../controllers/userController.js'
 const route = express.Router();
 
 route.post('/signup', signup);
-route.get('/signin', signin);
+route.post('/signin', signin);
 
 export default route;
