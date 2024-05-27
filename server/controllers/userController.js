@@ -6,7 +6,7 @@ export const signup = async (req, res)=>{
     const userData = new User(req.body);
     const {email} = userData;
     const userExists = await User.findOne({email});
-    if (userExists) return res.status(400).json({message: "User already exists!"});
+    if (userExists) return res.status(400).json({error: "User already exists!"});
     const user = await userData.save();
     res.status(200).json({message: "User created succesfully!"})
     }
